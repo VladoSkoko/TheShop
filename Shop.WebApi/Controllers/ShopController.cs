@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using NLog;
 using Shop.WebApi.Models;
 using Shop.WebApi.Services;
 

@@ -1,4 +1,5 @@
 ﻿using Shop.WebApi.DependencyInjection;
+using Shop.WebApi.Logging;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -10,7 +11,8 @@ namespace Shop.WebApi
         {
             AreaRegistration.RegisterAllAreas();
 
-            DependencyInjectionConfiguration.Initialize(GlobalConfiguration.Configuration);
+            LoggingConfiguration.Configure();
+            DependencyInjectionConfiguration.Configure(GlobalConfiguration.Configuration);
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

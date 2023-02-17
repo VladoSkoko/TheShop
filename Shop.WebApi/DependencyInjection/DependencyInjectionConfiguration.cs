@@ -3,6 +3,7 @@ using Autofac;
 using System.Reflection;
 using System.Web.Http;
 using Shop.WebApi.Services;
+using Autofac.Extras.NLog;
 
 namespace Shop.WebApi.DependencyInjection
 {
@@ -10,13 +11,13 @@ namespace Shop.WebApi.DependencyInjection
     {
         public static IContainer Container;
 
-        public static void Initialize(HttpConfiguration config)
+        public static void Configure(HttpConfiguration config)
         {
-            Initialize(config, RegisterServices(new ContainerBuilder()));
+            Configure(config, RegisterServices(new ContainerBuilder()));
         }
 
 
-        public static void Initialize(HttpConfiguration config, IContainer container)
+        public static void Configure(HttpConfiguration config, IContainer container)
         {
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
@@ -25,7 +26,7 @@ namespace Shop.WebApi.DependencyInjection
         {
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<Logger>().As<ILogger>().InstancePerRequest();
+            builder.RegisterModule<NLogModule>();
 
             Container = builder.Build();
 
