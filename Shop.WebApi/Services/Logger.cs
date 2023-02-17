@@ -2,7 +2,13 @@
 
 namespace Shop.WebApi.Services
 {
-    public class Logger
+    public interface ILogger
+    {
+        void Info(string message);
+        void Error(string message);
+        void Debug(string message);
+    }
+    public class Logger : ILogger
     {
         public void Info(string message)
         {
