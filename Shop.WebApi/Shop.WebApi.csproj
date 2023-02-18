@@ -159,15 +159,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Article\Models\ArticleDbEntity.cs" />
+    <Compile Include="Articles\Models\ArticleDbEntity.cs" />
+    <Compile Include="DependencyInjection\Bootstrapper.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionConfiguration.cs" />
     <Compile Include="Exceptions\ExceptionConfiguration.cs" />
     <Compile Include="Exceptions\ExceptionDictionary.cs" />
     <Compile Include="Exceptions\HttpExceptionResponse.cs" />
     <Compile Include="Exceptions\Types\HttpStatusCodeException.cs" />
+    <Compile Include="Exceptions\Types\NotFoundException.cs" />
     <Compile Include="Localisation\Translator.cs" />
     <Compile Include="Logging\ExceptionLogger.cs" />
-    <Compile Include="Article\Models\ArticleDto.cs" />
+    <Compile Include="Articles\Models\ArticleDto.cs" />
     <Compile Include="Resources\ExceptionMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,18 +180,22 @@
     <Compile Include="Exceptions\GlobalExceptionToResponseFilterAttribute.cs" />
     <Compile Include="Exceptions\Types\InternalServerException.cs" />
     <Compile Include="Logging\LoggingConfiguration.cs" />
-    <Compile Include="Article\Repositories\ArticleRepository.cs" />
-    <Compile Include="Article\Controllers\ArticleController.cs" />
+    <Compile Include="Articles\Repositories\ArticleRepository.cs" />
+    <Compile Include="Articles\Controllers\ArticleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Article\Models\Article.cs" />
+    <Compile Include="Articles\Models\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CachedSupplier.cs" />
-    <Compile Include="Services\Db.cs" />
-    <Compile Include="Services\Warehouse.cs" />
-    <Compile Include="Services\Dealer1.cs" />
-    <Compile Include="Services\Dealer2.cs" />
+    <Compile Include="Configuration\AppConfiguration.cs" />
+    <Compile Include="Suppliers\Enums\Dealer.cs" />
+    <Compile Include="Suppliers\Managers\SupplierManager.cs" />
+    <Compile Include="Suppliers\Services\CachedSupplierService.cs" />
+    <Compile Include="Database\Db.cs" />
+    <Compile Include="Suppliers\Services\WarehouseSupplierService.cs" />
+    <Compile Include="Suppliers\Services\Dealer1SupplierService.cs" />
+    <Compile Include="Suppliers\Services\Dealer2SupplierService.cs" />
+    <Compile Include="Suppliers\Services\ISupplierService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -207,9 +213,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ExceptionMessages.SR.resx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Supplier\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

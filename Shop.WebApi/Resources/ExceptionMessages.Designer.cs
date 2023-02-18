@@ -61,6 +61,15 @@ namespace Shop.WebApi.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Article is not in stock..
+        /// </summary>
+        internal static string ArticleNotFound {
+            get {
+                return ResourceManager.GetString("ArticleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not order the article..
         /// </summary>
         internal static string CouldNotOrderArticle {
@@ -93,6 +102,15 @@ namespace Shop.WebApi.Resources {
         internal static string InvalidExceptionMessage {
             get {
                 return ResourceManager.GetString("InvalidExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided Dealer value {0} is not supported..
+        /// </summary>
+        internal static string UnsupportedDealerProvided {
+            get {
+                return ResourceManager.GetString("UnsupportedDealerProvided", resourceCulture);
             }
         }
     }

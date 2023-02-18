@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArticleNotFound" xml:space="preserve">
+    <value>Article is not in stock.</value>
+  </data>
   <data name="CouldNotOrderArticle" xml:space="preserve">
     <value>Could not order the article.</value>
   </data>
@@ -128,5 +131,8 @@
   </data>
   <data name="InvalidExceptionMessage" xml:space="preserve">
     <value>The provided ExceptionMessage is not added to the Dictionary.</value>
+  </data>
+  <data name="UnsupportedDealerProvided" xml:space="preserve">
+    <value>Provided Dealer value {0} is not supported.</value>
   </data>
 </root>

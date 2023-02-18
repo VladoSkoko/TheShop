@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shop.WebApi.Models
+namespace Shop.WebApi.Articles.Models
 {
     public class Article
     {
@@ -42,6 +42,18 @@ namespace Shop.WebApi.Models
             this.BuyerUserId = buyerUserId;
             this.IsSold = true;
             this.SellingDate = DateTime.Now;
+        }
+
+        public ArticleDto ToDto()
+        {
+            return new ArticleDto()
+            {
+                Name = this.Name,
+                Price = this.Price,
+                IsSold = this.IsSold,
+                SellingDate = this.SellingDate,
+                BuyerUserId = this.BuyerUserId
+            };
         }
     }
 }

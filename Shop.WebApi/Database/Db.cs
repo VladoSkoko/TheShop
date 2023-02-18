@@ -1,7 +1,7 @@
-﻿using Shop.WebApi.Models;
+﻿using Shop.WebApi.Articles.Models;
 using System.Collections.Generic;
 
-namespace Shop.WebApi.Services
+namespace Shop.WebApi.Database
 {
     public interface IDb
     {
