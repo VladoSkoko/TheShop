@@ -12,12 +12,7 @@ namespace Shop.WebApi.Services
 
         public Article GetArticle(int id)
         {
-            return new Article()
-            {
-                ID = id,
-                Name_of_article = $"Article {id}",
-                ArticlePrice = new Random().Next(100, 500)
-            };
+            return new Article(id, $"Article {id}", new Random().Next(100, 500), false);
         }
     }
 }
