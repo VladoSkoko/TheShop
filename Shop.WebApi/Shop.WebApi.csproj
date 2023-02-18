@@ -160,6 +160,21 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionConfiguration.cs" />
+    <Compile Include="Exceptions\ExceptionConfiguration.cs" />
+    <Compile Include="Exceptions\ExceptionDictionary.cs" />
+    <Compile Include="Exceptions\HttpExceptionResponse.cs" />
+    <Compile Include="Exceptions\Types\HttpStatusCodeException.cs" />
+    <Compile Include="Localisation\Translator.cs" />
+    <Compile Include="Logging\ExceptionLogger.cs" />
+    <Compile Include="Resources\ExceptionMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\Types\BadRequestException.cs" />
+    <Compile Include="Exceptions\ExceptionMessage.cs" />
+    <Compile Include="Exceptions\GlobalExceptionToResponseFilterAttribute.cs" />
+    <Compile Include="Exceptions\Types\InternalServerException.cs" />
     <Compile Include="Logging\LoggingConfiguration.cs" />
     <Compile Include="Services\Db.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -182,7 +197,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ExceptionMessages.SR.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

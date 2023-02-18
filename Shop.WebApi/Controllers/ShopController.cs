@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Web.Http;
 using NLog;
+using Shop.WebApi.Exceptions;
+using Shop.WebApi.Localisation;
 using Shop.WebApi.Models;
+using Shop.WebApi.Resources;
 using Shop.WebApi.Services;
 
 namespace Shop.WebApi.Controllers
@@ -77,13 +80,12 @@ namespace Shop.WebApi.Controllers
         [HttpPost]
         public void BuyArticle(Article article, int buyerId)
         {
-            var id = article.ID;
             if (article == null)
             {
-                throw new Exception("Could not order article");
+                throw new BadRequestException(ExceptionMessage.CouldNotOrderArticle);
             }
 
-            logger.Debug("Trying to sell article with id=" + id);
+            logger.Debug("Trying to sell article with id=" + article.ID);
 
             article.IsSold = true;
             article.SoldDate = DateTime.Now;
@@ -92,15 +94,12 @@ namespace Shop.WebApi.Controllers
             try
             {
                 Db.Save(article);
-                logger.Info("Article with id " + id + " is sold.");
+                logger.Info("Article with id " + article.ID + " is sold.");
             }
             catch (ArgumentNullException ex)
             {
-                logger.Error("Could not save article with id " + id);
-                throw new Exception("Could not save article with id");
-            }
-            catch (Exception)
-            {
+                logger.Error("Could not save article with id " + article.ID);
+                throw ex;
             }
         }
     }
