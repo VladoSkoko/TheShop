@@ -10,11 +10,6 @@ using Shop.WebApi.Articles.Repositories;
 
 namespace Shop.WebApi.Articles.Controllers
 {
-    public interface IArticleController
-    {
-
-    }
-
     [RoutePrefix("api/v1/article")]
     public class ArticleController : ApiController
     {
@@ -34,7 +29,7 @@ namespace Shop.WebApi.Articles.Controllers
             this.supplierManager = supplierManager;
         }
 
-        [Route("{id:int}/{maxExpectedPrice?}")]
+        [Route("{id:int}")]
         [HttpGet()]
         public async Task<ArticleDto> GetArticle(int id, int maxExpectedPrice = 200)
         {
