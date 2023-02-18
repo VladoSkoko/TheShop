@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using Shop.WebApi.Exceptions;
+using System.Web.Http;
 
 namespace Shop.WebApi
 {
@@ -7,6 +8,7 @@ namespace Shop.WebApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            ExceptionConfiguration.ConfigureFilters(config);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
