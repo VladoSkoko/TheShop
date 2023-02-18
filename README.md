@@ -13,6 +13,7 @@
 7. Addded DTO and DB Entity classes for Article and changed the regular Article class to ensure data validity.
 8. Renamed and consolidated CachedSupplier, Warehouse, Dealer1 and Dealer2 as ISupplierService.
 9. Added SupplierManager to asynchronously check the inventory of all suppliers and keep the cache updated.
+10. Added Swagger UI by appending `/swagger` to the URL - http://localhost:30496/swagger
 
 # Questions & Uncertainties
 1. Are all suppliers equal in order of preference?
