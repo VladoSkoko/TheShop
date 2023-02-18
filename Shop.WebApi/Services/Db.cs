@@ -1,21 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Shop.WebApi.Models;
+﻿using Shop.WebApi.Models;
+using System.Collections.Generic;
 
 namespace Shop.WebApi.Services
 {
-    public class Db
+    public interface IDb
     {
-        private List<Article> _articles = new List<Article>();
+        IList<ArticleDbEntity> Articles { get; }
+    }
 
-        public Article GetById(int id)
-        {
-            return _articles.Single(x => x.ID == id);
-        }
-
-        public void Save(Article article)
-        {
-            _articles.Add(article);
-        }
+    public class Db : IDb
+    {
+        public IList<ArticleDbEntity> Articles { get; } = new List<ArticleDbEntity>();
     }
 }

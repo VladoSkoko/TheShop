@@ -9,9 +9,10 @@ using Shop.WebApi.Services;
 
 namespace Shop.WebApi.Controllers
 {
-    public class ShopController : ApiController
+    [RoutePrefix("api/v1/article")]
+    public class ArticleController : ApiController
     {
-        private Db Db;
+        private IArticleRepository articleRepository;
         private ILogger logger;
 
         private CachedSupplier CachedSupplier;
@@ -19,11 +20,12 @@ namespace Shop.WebApi.Controllers
         private Dealer1 Dealer1;
         private Dealer2 Dealer2;
 
-        public ShopController(
-            ILogger logger
+        public ArticleController(
+            ILogger logger,
+            IArticleRepository articleRepository
         )
         {
-            Db = new Db();
+            this.articleRepository = articleRepository;
             this.logger = logger;
             CachedSupplier = new CachedSupplier();
             Warehouse = new Warehouse();
@@ -31,6 +33,7 @@ namespace Shop.WebApi.Controllers
             Dealer2 = new Dealer2();
         }
 
+        [Route("{id:int}/{maxExpectedPrice?}")]
         [HttpGet()]
         public Article GetArtice(int id, int maxExpectedPrice = 200)
         {
@@ -40,25 +43,25 @@ namespace Shop.WebApi.Controllers
             if (articleExists)
             {
                 tmp = CachedSupplier.GetArticle(id);
-                if (maxExpectedPrice < tmp.ArticlePrice)
+                if (maxExpectedPrice < tmp.Price)
                 {
                     articleExists = Warehouse.ArticleInInventory(id);
                     if (articleExists)
                     {
                         tmp = Warehouse.GetArticle(id);
-                        if (maxExpectedPrice < tmp.ArticlePrice)
+                        if (maxExpectedPrice < tmp.Price)
                         {
                             articleExists = Dealer1.ArticleInInventory(id);
                             if (articleExists)
                             {
                                 tmp = Dealer1.GetArticle(id);
-                                if (maxExpectedPrice < tmp.ArticlePrice)
+                                if (maxExpectedPrice < tmp.Price)
                                 {
                                     articleExists = Dealer2.ArticleInInventory(id);
                                     if (articleExists)
                                     {
                                         tmp = Dealer2.GetArticle(id);
-                                        if (maxExpectedPrice < tmp.ArticlePrice)
+                                        if (maxExpectedPrice < tmp.Price)
                                         {
                                             article = tmp;
                                         }
@@ -77,28 +80,29 @@ namespace Shop.WebApi.Controllers
             return article;
         }
 
+        [Route("{id:int}/buy/{buyerId:int}")]
         [HttpPost]
-        public void BuyArticle(Article article, int buyerId)
+        public void BuyArticle(int id, int buyerId, ArticleDto articleDto)
         {
-            if (article == null)
+            if (articleDto == null)
             {
                 throw new BadRequestException(ExceptionMessage.CouldNotOrderArticle);
             }
 
-            logger.Debug("Trying to sell article with id=" + article.ID);
+            logger.Debug("Trying to sell article with id=" + id);
 
-            article.IsSold = true;
-            article.SoldDate = DateTime.Now;
-            article.BuyerUserId = buyerId;
+            var article = new Article(id, articleDto);
+
+            article.Sell(buyerId);
 
             try
             {
-                Db.Save(article);
-                logger.Info("Article with id " + article.ID + " is sold.");
+                articleRepository.Insert(new ArticleDbEntity(article));
+                logger.Info("Article with id " + article.Id + " is sold.");
             }
             catch (ArgumentNullException ex)
             {
-                logger.Error("Could not save article with id " + article.ID);
+                logger.Error("Could not save article with id " + article.Id);
                 throw ex;
             }
         }
