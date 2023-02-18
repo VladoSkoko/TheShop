@@ -1,7 +1,8 @@
 ﻿using System.Linq;
-using Shop.WebApi.Models;
+using Shop.WebApi.Articles.Models;
+using Shop.WebApi.Database;
 
-namespace Shop.WebApi.Services
+namespace Shop.WebApi.Articles.Repositories
 {
     public interface IArticleRepository
     {

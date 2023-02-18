@@ -2,7 +2,6 @@
 using Autofac;
 using System.Reflection;
 using System.Web.Http;
-using Shop.WebApi.Services;
 using Autofac.Extras.NLog;
 
 namespace Shop.WebApi.DependencyInjection
@@ -24,6 +23,8 @@ namespace Shop.WebApi.DependencyInjection
 
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
+            Bootstrapper.RegisterDependencies(builder);
+
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterModule<NLogModule>();

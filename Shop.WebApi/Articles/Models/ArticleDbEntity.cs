@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shop.WebApi.Models
+namespace Shop.WebApi.Articles.Models
 {
     public class ArticleDbEntity
     {
