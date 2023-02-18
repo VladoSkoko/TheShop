@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Shop.WebApi.Articles.Models;
-using Shop.WebApi.Services;
+using Shop.WebApi.Configuration;
 using Shop.WebApi.Suppliers.Enums;
 
 namespace Shop.WebApi.Suppliers.Services
