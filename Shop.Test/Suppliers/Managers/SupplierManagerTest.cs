@@ -174,5 +174,43 @@ namespace Shop.Test.Suppliers.Managers
             this.supplier2.Verify(x => x.ArticleInInventoryAsync(It.IsAny<int>()), Times.Once());
             this.supplier2.Verify(x => x.GetArticleAsync(It.IsAny<int>()), Times.Never());
         }
+
+        [Fact]
+        public async void GetArticleAsync_SecondSupplierThrows()
+        {
+            int articleId = 123;
+            var article = new ArticleDto()
+            {
+                Name = "Test Article",
+                Price = 100,
+                IsSold = false,
+            };
+
+            this.cachedSupplierService.Setup(x => x.ArticleInInventoryAsync(articleId)).Returns(Task.FromResult(false));
+
+            this.supplier1.Setup(x => x.ArticleInInventoryAsync(articleId)).Returns(Task.FromResult(false));
+
+            this.supplier2.Setup(x => x.ArticleInInventoryAsync(articleId)).Throws<NotImplementedException>();
+
+            var supplierManager = new SupplierManager(
+                this.cachedSupplierService.Object,
+                new List<ISupplierService>() { supplier1.Object, supplier2.Object }
+            );
+
+            var notImplementedException =
+                await Assert.ThrowsAsync<NotImplementedException>(() => supplierManager.GetArticleAsync(articleId));
+
+            Assert.IsType<NotImplementedException>(notImplementedException);
+
+            this.cachedSupplierService.Verify(x => x.ArticleInInventoryAsync(It.IsAny<int>()), Times.Once());
+            this.cachedSupplierService.Verify(x => x.GetArticleAsync(It.IsAny<int>()), Times.Never());
+            this.cachedSupplierService.Verify(x => x.SetArticle(It.IsAny<Article>()), Times.Never());
+
+            this.supplier1.Verify(x => x.ArticleInInventoryAsync(It.IsAny<int>()), Times.Once());
+            this.supplier1.Verify(x => x.GetArticleAsync(It.IsAny<int>()), Times.Never());
+
+            this.supplier2.Verify(x => x.ArticleInInventoryAsync(It.IsAny<int>()), Times.Once());
+            this.supplier2.Verify(x => x.GetArticleAsync(It.IsAny<int>()), Times.Never());
+        }
     }
 }
