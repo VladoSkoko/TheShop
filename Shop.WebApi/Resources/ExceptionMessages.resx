@@ -132,7 +132,4 @@
   <data name="InvalidExceptionMessage" xml:space="preserve">
     <value>The provided ExceptionMessage is not added to the Dictionary.</value>
   </data>
-  <data name="UnsupportedDealerProvided" xml:space="preserve">
-    <value>Provided Dealer value {0} is not supported.</value>
-  </data>
 </root>

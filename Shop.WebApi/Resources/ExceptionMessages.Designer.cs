@@ -104,14 +104,5 @@ namespace Shop.WebApi.Resources {
                 return ResourceManager.GetString("InvalidExceptionMessage", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Provided Dealer value {0} is not supported..
-        /// </summary>
-        internal static string UnsupportedDealerProvided {
-            get {
-                return ResourceManager.GetString("UnsupportedDealerProvided", resourceCulture);
-            }
-        }
     }
 }
