@@ -1,18 +1,22 @@
 # The Shop
 
-# APIs (http://localhost:30496/swagger)
-ArticleController -> GetArticle()
+# APIs
+API documentation: http://localhost:30496/swagger
+
+**ArticleController -> GetArticle()**
+
 GET `http://localhost:30496/api/v1/article/{articleId}?maxExpectedPrice={maxExpectedPrice}`
 
 Checks whether the Article is present in cache. If it is, fetch it from there. If not, attempt to fetch it from external suppliers. Each supplier is queried to check whether the Article is in stock. All results are parsed and the first in order to have it in stock is used, with the warehouse having precedence over external suppliers. If none have it in stock, `null` is returned. In case one of the supplier calls errors out, so does the HTTP request.
 
-ArticleController -> BuyArticle()
+**ArticleController -> BuyArticle()**
+
 POST `http://localhost:30496/api/v1/article/{articleId}/buy/{buyerUserId}`
 
 Expects `ArticleDto` as a raw JSON body parameter. "Sells" the Article by setting its selling information and inserting it into the mock database. 
 
 # Localisation
-To change the language of HTTP responses to Serbian, change <globalization uiCulture="en-US" /> to <globalization uiCulture="sr-Latn-RS" /> in `Web.config`.
+To change the language of HTTP responses to Serbian, change `<globalization uiCulture="en-US" />` to `<globalization uiCulture="sr-Latn-RS" />` in `Web.config`.
 
 # Setup of the Original Source (not needed now)
 1. Run `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r` to fix the build.
