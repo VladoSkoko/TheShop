@@ -196,7 +196,6 @@
     <Compile Include="Articles\Models\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuration\AppConfiguration.cs" />
-    <Compile Include="Suppliers\Enums\Dealer.cs" />
     <Compile Include="Suppliers\Managers\SupplierManager.cs" />
     <Compile Include="Suppliers\Services\CachedSupplierService.cs" />
     <Compile Include="Database\Db.cs" />
@@ -219,7 +218,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ExceptionMessages.SR.resx" />
+    <EmbeddedResource Include="Resources\ExceptionMessages.sr-Latn-RS.resx" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

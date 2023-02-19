@@ -11,7 +11,7 @@ namespace Shop.WebApi.Articles.Repositories
     }
     public class ArticleRepository : IArticleRepository
     {
-        private IDb Db { get; }
+        private readonly IDb Db;
         public ArticleRepository(IDb Db) 
         {
             this.Db = Db;

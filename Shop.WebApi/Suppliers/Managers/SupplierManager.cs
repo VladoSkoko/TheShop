@@ -14,8 +14,8 @@ namespace Shop.WebApi.Suppliers.Managers
 
     public class SupplierManager : ISupplierManager
     {
-        private ICachedSupplierService cachedSupplierService;
-        private IEnumerable<ISupplierService> externalSupplierServices;
+        private readonly ICachedSupplierService cachedSupplierService;
+        private readonly IEnumerable<ISupplierService> externalSupplierServices;
 
         public SupplierManager(
             ICachedSupplierService cachedSupplierService,

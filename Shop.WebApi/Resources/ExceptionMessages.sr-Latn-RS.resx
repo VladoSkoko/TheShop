@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArticleNotFound" xml:space="preserve">
+    <value>Artikal nije na stanju.</value>
+  </data>
   <data name="CouldNotOrderArticle" xml:space="preserve">
     <value>Nije moguće poručiti artikal.</value>
+  </data>
+  <data name="CouldNotSaveArticle" xml:space="preserve">
+    <value>Nije moguće sačuvati artikal sa ID-em {0}.</value>
+  </data>
+  <data name="InternalServerError" xml:space="preserve">
+    <value>Desila se serverska greška. Guid: {0}.</value>
+  </data>
+  <data name="InvalidExceptionMessage" xml:space="preserve">
+    <value>Prosleđena vrednost za ExceptionMessage nije dodata u rečnik (Dictionary) poruka za izuzetke.</value>
   </data>
 </root>
