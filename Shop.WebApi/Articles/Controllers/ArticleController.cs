@@ -7,6 +7,7 @@ using Shop.WebApi.Exceptions.Types;
 using Shop.WebApi.Articles.Models;
 using Shop.WebApi.Suppliers.Managers;
 using Shop.WebApi.Articles.Repositories;
+using Shop.WebApi.Common.Models;
 
 namespace Shop.WebApi.Articles.Controllers
 {
@@ -44,7 +45,7 @@ namespace Shop.WebApi.Articles.Controllers
 
         [Route("{id:int}/buy/{buyerId:int}")]
         [HttpPost]
-        public void BuyArticle(int id, int buyerId, [FromBody] ArticleDto articleDto)
+        public IApiResponse BuyArticle(int id, int buyerId, [FromBody] ArticleDto articleDto)
         {
             if (articleDto == null)
             {
@@ -67,6 +68,8 @@ namespace Shop.WebApi.Articles.Controllers
                 logger.Error("Could not save article with id " + article.Id);
                 throw ex;
             }
+
+            return new ApiResponse(true);
         }
     }
 }
