@@ -7,6 +7,5 @@
         InternalServerError = 2,
         CouldNotSaveArticle = 3,
         ArticleNotFound = 4,
-        UnsupportedDealerProvided = 5,
     }
 }

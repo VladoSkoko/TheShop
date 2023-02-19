@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Shop.WebApi.Articles.Models;
 using Shop.WebApi.Configuration;
-using Shop.WebApi.Suppliers.Enums;
 
 namespace Shop.WebApi.Suppliers.Services
 {
@@ -18,7 +17,7 @@ namespace Shop.WebApi.Suppliers.Services
 
         public async Task<bool> ArticleInInventoryAsync(int id)
         {
-            string supplierUrl = this.appConfiguration.GetDealerUrl(Dealer.Dealer2);
+            string supplierUrl = this.appConfiguration.GetDealer2Url();
 
             using (var client = new HttpClient())
             {
@@ -29,7 +28,7 @@ namespace Shop.WebApi.Suppliers.Services
 
         public async Task<ArticleDto> GetArticleAsync(int id)
         {
-            string supplierUrl = this.appConfiguration.GetDealerUrl(Dealer.Dealer2);
+            string supplierUrl = this.appConfiguration.GetDealer2Url();
 
             using (var client = new HttpClient())
             {

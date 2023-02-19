@@ -1,31 +1,23 @@
-﻿using Shop.WebApi.Exceptions;
-using Shop.WebApi.Localisation;
-using Shop.WebApi.Suppliers.Enums;
-using System;
-using System.Configuration;
+﻿using System.Configuration;
 
 namespace Shop.WebApi.Configuration
 {
     public interface IAppConfiguration
     {
-        string GetDealerUrl(Dealer dealer);
+        string GetDealer1Url();
+        string GetDealer2Url();
     }
 
     public class AppConfiguration : IAppConfiguration
     {
-        public string GetDealerUrl(Dealer dealer)
+        public string GetDealer1Url()
         {
-            switch (dealer)
-            {
-                case Dealer.Dealer1:
-                    return ConfigurationManager.AppSettings["Dealer1Url"];
-                case Dealer.Dealer2:
-                    return ConfigurationManager.AppSettings["Dealer2Url"];
-                default:
-                    throw new NotSupportedException(
-                        string.Format(Translator.TranslateExceptionMessage(ExceptionMessage.UnsupportedDealerProvided), dealer.ToString())
-                    );
-            }
+            return ConfigurationManager.AppSettings["Dealer1Url"];
+        }
+
+        public string GetDealer2Url()
+        {
+            return ConfigurationManager.AppSettings["Dealer2Url"];
         }
     }
 }
