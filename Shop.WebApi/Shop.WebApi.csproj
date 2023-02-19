@@ -168,6 +168,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Articles\Models\ArticleDbEntity.cs" />
+    <Compile Include="Common\Models\ApiResponse.cs" />
     <Compile Include="DependencyInjection\Bootstrapper.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionConfiguration.cs" />
     <Compile Include="Exceptions\ExceptionConfiguration.cs" />
