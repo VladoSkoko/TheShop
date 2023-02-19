@@ -40,9 +40,11 @@ To change the language of HTTP responses to Serbian, change `<globalization uiCu
 3. Should there be any correspondence between the mocked database and the available suppliers?
 
 # Not done
-1. Incorporate `maxExpectedPrice` into the Article fetching logic, as I wasn't sure what it was supposed to do. I would have passed it onto every `ISupplierService->GetArticleAsync()` method and returned true only if the present Article's price is lower than the provided `maxExpectedPrice` value.
+1. Incorporation of `maxExpectedPrice` into the Article fetching logic, as I wasn't sure what it was supposed to do. I would have passed it onto every `ISupplierService->GetArticleAsync()` method and returned true only if the present Article's price is lower than the provided `maxExpectedPrice` value.
 2. Integration tests, due to uncertainty of what the APIs are supposed to do.
-3. Remove logs, or replace them with tracing.
-4. Reworked `CachedSupplierService` to utilize distributed caching, like Redis.
-5. Enable testing using the command `dotnet test`, like .NET Core and newer versions allow.
+3. Removal of unnecessary logs, or replacing them with tracing.
+4. Utilization of distributed caching, like Redis, in `CachedSupplierService`.
+5. Testing using the command `dotnet test`, like .NET Core and newer versions allow.
 6. Additional build configurations for Serbian localisation.
+7. Linting.
+8. Test coverage report generation.
