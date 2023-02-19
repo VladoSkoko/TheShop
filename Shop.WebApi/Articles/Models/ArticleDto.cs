@@ -11,21 +11,5 @@ namespace Shop.WebApi.Articles.Models
         public int? BuyerUserId { get; set; }
 
         public DateTime? SellingDate { get; set; }
-
-        //public ArticleDto(string name, int price, bool isSold)
-        //{
-        //    this.Name = name;
-        //    this.Price = price;
-        //    this.IsSold = isSold;
-        //}
-
-        //public ArticleDto(Article article)
-        //{
-        //    this.Name = article.Name;
-        //    this.Price = article.Price;
-        //    this.IsSold = article.IsSold;
-        //    this.SellingDate = article.SellingDate;
-        //    this.BuyerUserId = article.BuyerUserId;
-        //}
     }
 }

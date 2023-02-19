@@ -9,7 +9,7 @@ namespace Shop.WebApi.Suppliers.Services
 {
     public class Dealer2SupplierService : ISupplierService
     {
-        private IAppConfiguration appConfiguration;
+        private readonly IAppConfiguration appConfiguration;
 
         public Dealer2SupplierService(IAppConfiguration appConfiguration)
         {

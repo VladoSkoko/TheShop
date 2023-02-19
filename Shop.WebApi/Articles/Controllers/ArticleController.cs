@@ -13,10 +13,9 @@ namespace Shop.WebApi.Articles.Controllers
     [RoutePrefix("api/v1/article")]
     public class ArticleController : ApiController
     {
-        private IArticleRepository articleRepository;
-        private ILogger logger;
-
-        private ISupplierManager supplierManager;
+        private readonly IArticleRepository articleRepository;
+        private readonly ILogger logger;
+        private readonly ISupplierManager supplierManager;
 
         public ArticleController(
             ILogger logger,
